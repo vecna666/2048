@@ -19,14 +19,13 @@ public class MainActivity extends Activity {
         WebSettings webSettings = mWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         mWebView.setWebViewClient(new MyWebViewClient());
-        settings.javaScriptEnabled = true
-        settings.databaseEnabled = true
-        settings.domStorageEnabled = true
-        settings.setSupportMultipleWindows(false)
+        webSettings.setdatabaseEnabled(true)
+        webSettings.domStorageEnabled(true)
+        webSettings.setSupportMultipleWindows(false)
         // Zooms out the content to fit on screen by width. For example, showing images.
-        settings.layoutAlgorithm = WebSettings.LayoutAlgorithm.TEXT_AUTOSIZING
-        settings.loadWithOverviewMode = true
-        settings.useWideViewPort = true
+        webSettings.layoutAlgorithm(WebSettings.LayoutAlgorithm.TEXT_AUTOSIZING)
+        webSettings.loadWithOverviewMode(true)
+        webSettings.useWideViewPort(true)
 
         // REMOTE RESOURCE
          mWebView.loadUrl("https://github.com");
