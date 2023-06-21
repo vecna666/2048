@@ -3,6 +3,7 @@ package com.example.app;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -10,36 +11,49 @@ import android.webkit.WebViewClient;
 public class MainActivity extends Activity {
 
     private WebView mWebView;
+    private WebSettings mWebSettings;
 
     @Override
     @SuppressLint("SetJavaScriptEnabled")
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
+
         mWebView = findViewById(R.id.activity_main_webview);
-        WebSettings webSettings = mWebView.getSettings();
-        webSettings.setJavaScriptEnabled(true);
-        webSettings.setDatabaseEnabled(true);
-        webSettings.setDomStorageEnabled(true);
-        webSettings.setSupportMultipleWindows(false);
-        webSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.TEXT_AUTOSIZING);
-        webSettings.setLoadWithOverviewMode(true);
-        webSettings.setUseWideViewPort(true);
-        webSettings.setRenderPriority(WebSettings.RenderPriority.HIGH);
-        webSettings.setBuiltInZoomControls(true);
-        webSettings.setSupportZoom(true);
-        webSettings.setDisplayZoomControls(false);
-        webSettings.setSavePassword(true);
-        webSettings.setSaveFormData(true);
-        webSettings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
-        webSettings.setJavaScriptCanOpenWindowsAutomatically(false);
-        webSettings.setEnableSmoothTransition(true);
-        webSettings.setMediaPlaybackRequiresUserGesture(true);
-        
+        mWebSettings = mWebView.getSettings();
         mWebView.setWebViewClient(new WebViewClient());
-        //mWebView.loadUrl("https://www.google.com");
-        
+
+        // Configure WebView settings
+        configureWebViewSettings();
+
+        // Load the web page
+        loadWebPage();
+    }
+
+    private void configureWebViewSettings() {
+        mWebSettings.setJavaScriptEnabled(true);
+        mWebSettings.setDatabaseEnabled(true);
+        mWebSettings.setDomStorageEnabled(true);
+        mWebSettings.setSupportMultipleWindows(false);
+        mWebSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.TEXT_AUTOSIZING);
+        mWebSettings.setLoadWithOverviewMode(true);
+        mWebSettings.setUseWideViewPort(true);
+        mWebSettings.setRenderPriority(WebSettings.RenderPriority.HIGH);
+        mWebSettings.setBuiltInZoomControls(true);
+        mWebSettings.setSupportZoom(true);
+        mWebSettings.setDisplayZoomControls(false);
+        mWebSettings.setSavePassword(true);
+        mWebSettings.setSaveFormData(true);
+        mWebSettings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+        mWebSettings.setJavaScriptCanOpenWindowsAutomatically(false);
+        mWebSettings.setEnableSmoothTransition(true);
+        mWebSettings.setMediaPlaybackRequiresUserGesture(true);
+
+        // Enable hardware acceleration
+        mWebView.setLayerType(View.LAYER_TYPE_HARDWARE, null);
+    }
+
+    private void loadWebPage() {
         // REMOTE RESOURCE
         //mWebView.loadUrl("https://github.com");
 
