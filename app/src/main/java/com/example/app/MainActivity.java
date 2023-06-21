@@ -38,13 +38,13 @@ public class MainActivity extends Activity {
         webSettings.setMediaPlaybackRequiresUserGesture(true);
         
         mWebView.setWebViewClient(new WebViewClient());
-        mWebView.loadUrl("https://www.google.com");
+        //mWebView.loadUrl("https://www.google.com");
         
         // REMOTE RESOURCE
-        mWebView.loadUrl("https://github.com");
+        //mWebView.loadUrl("https://github.com");
 
         // LOCAL RESOURCE
-        // mWebView.loadUrl("file:///android_asset/index.html");
+        mWebView.loadUrl("file:///android_asset/index.html");
     }
 
     @Override
