@@ -19,16 +19,15 @@ public class MainActivity extends Activity {
         WebSettings webSettings = mWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         mWebView.setWebViewClient(new MyWebViewClient());
-        webSettings.setdatabaseEnabled(true)
-        webSettings.domStorageEnabled(true)
-        webSettings.setSupportMultipleWindows(false)
-        // Zooms out the content to fit on screen by width. For example, showing images.
-        webSettings.layoutAlgorithm(WebSettings.LayoutAlgorithm.TEXT_AUTOSIZING)
-        webSettings.loadWithOverviewMode(true)
-        webSettings.useWideViewPort(true)
+        webSettings.setDatabaseEnabled(true);
+        webSettings.setDomStorageEnabled(true);
+        webSettings.setSupportMultipleWindows(false);
+        webSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.TEXT_AUTOSIZING);
+        webSettings.setLoadWithOverviewMode(true);
+        webSettings.setUseWideViewPort(true);
 
         // REMOTE RESOURCE
-         mWebView.loadUrl("https://github.com");
+        mWebView.loadUrl("https://github.com");
 
         // LOCAL RESOURCE
         // mWebView.loadUrl("file:///android_asset/index.html");
@@ -36,7 +35,7 @@ public class MainActivity extends Activity {
 
     @Override
     public void onBackPressed() {
-        if(mWebView.canGoBack()) {
+        if (mWebView.canGoBack()) {
             mWebView.goBack();
         } else {
             super.onBackPressed();
