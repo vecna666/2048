@@ -7,6 +7,8 @@ import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 
 public class MainActivity extends Activity {
 
@@ -22,6 +24,20 @@ public class MainActivity extends Activity {
         mWebView = findViewById(R.id.activity_main_webview);
         mWebSettings = mWebView.getSettings();
         mWebView.setWebViewClient(new WebViewClient());
+
+        @Override
+public void onConfigurationChanged(Configuration newConfig) {
+    super.onConfigurationChanged(newConfig);
+
+    if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+        // Lock screen orientation to landscape
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+    } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+        // Unlock screen orientation
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
+    }
+}
+
 
         // Configure WebView settings
         configureWebViewSettings();
