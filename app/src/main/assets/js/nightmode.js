@@ -3,7 +3,7 @@ function toggleNightMode() {
     document.getElementsByTagName("html")[0].style.backgroundColor = "#faf8ef";
     document.getElementsByTagName("body")[0].style.backgroundColor = "#faf8ef";
     if (typeof(Storage) !== "undefined") {
-      localStorage['nightmode'] = "1";
+      localStorage['nightmode'] = "0";
     }
     return false;
   } else {
