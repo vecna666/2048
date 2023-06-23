@@ -2,8 +2,6 @@ package com.example.app;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.pm.ActivityInfo;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebSettings;
@@ -15,35 +13,21 @@ public class MainActivity extends Activity {
     private WebView mWebView;
     private WebSettings mWebSettings;
 
-    @SuppressLint("SetJavaScriptEnabled")
     @Override
+    @SuppressLint("SetJavaScriptEnabled")
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         mWebView = findViewById(R.id.activity_main_webview);
         mWebSettings = mWebView.getSettings();
+        mWebView.setWebViewClient(new WebViewClient());
 
         // Configure WebView settings
         configureWebViewSettings();
 
         // Load the web page
         loadWebPage();
-
-        mWebView.setWebViewClient(new WebViewClient());
-    }
-
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-
-        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            // Lock screen orientation to landscape
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
-            // Unlock screen orientation
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
-        }
     }
 
     private void configureWebViewSettings() {
@@ -71,7 +55,7 @@ public class MainActivity extends Activity {
 
     private void loadWebPage() {
         // REMOTE RESOURCE
-        // mWebView.loadUrl("https://github.com");
+        //mWebView.loadUrl("https://github.com");
 
         // LOCAL RESOURCE
         mWebView.loadUrl("file:///android_asset/index.html");
